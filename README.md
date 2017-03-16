@@ -48,3 +48,33 @@ AVFHmeIadvijSQBpY0bFzsSZGF/PmAh+NiYJpWRdDXfeeQStdZWxPESbWoXPu/Qg
 0dIifLaHr2Nugkg8eTcp+F2rl2YIjnQcEFqOUNhyI8kPzzsWinYel47tC9kDL7qR
 s34MLubs2L1iMIk7fJ4=
 -----END CERTIFICATE-----
+
+
+Job for docker.service failed. See "systemctl status docker.service" and "journalctl -xn" for details.
+
+linux-o4ot:/etc/systemd/docker.service.d # systemctl status docker.service -l
+docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled)
+   Active: failed (Result: exit-code) since Thu 2017-03-16 04:53:11 EDT; 2min 6s ago
+     Docs: https://docs.docker.com
+  Process: 22191 ExecStart=/usr/bin/dockerd (code=exited, status=1/FAILURE)
+ Main PID: 22191 (code=exited, status=1/FAILURE)
+
+Mar 16 04:53:11 linux-o4ot dockerd[22191]: /usr/bin/dockerd: /lib64/libdevmapper.so.1.02: version `DM_1_02_97' not found (required by /usr/bin/dockerd)
+
+
+linux-o4ot:/etc/systemd/docker.service.d # journalctl -xn
+-- Logs begin at Mon 2017-03-13 13:17:18 EDT, end at Thu 2017-03-16 04:53:11 EDT. --
+Mar 16 04:30:01 linux-o4ot cron[22079]: pam_unix(crond:session): session opened for user root by (uid=0)
+Mar 16 04:30:01 linux-o4ot kernel: type=1006 audit(1489653001.582:293): pid=22079 uid=0 old auid=4294967295 new auid=0 old ses=4294967295 new ses=255 res=1
+Mar 16 04:30:01 linux-o4ot CRON[22079]: pam_unix(crond:session): session closed for user root
+Mar 16 04:45:01 linux-o4ot kernel: type=1006 audit(1489653901.746:294): pid=22130 uid=0 old auid=4294967295 new auid=0 old ses=4294967295 new ses=256 res=1
+Mar 16 04:45:01 linux-o4ot cron[22130]: pam_unix(crond:session): session opened for user oot by (uid=0)
+Mar 16 04:45:01 linux-o4ot CRON[22130]: pam_unix(crond:session): session closed for user root
+Mar 16 04:50:04 linux-o4ot gdm-password][22169]: gkr-pam: unlocked login keyring
+Mar 16 04:50:04 linux-o4ot dbus[698]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service'
+Mar 16 04:50:04 linux-o4ot dbus[698]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Mar 16 04:53:11 linux-o4ot dockerd[22191]: /usr/bin/dockerd: /lib64/libdevmapper.so.1.02: version `DM_1_02_97' not found (required by /usr/bin/dockerd)
+Mar 16 05:00:01 linux-o4ot cron[22253]: pam_unix(crond:session): session opened for user root by (uid=0)
+Mar 16 05:00:01 linux-o4ot kernel: type=1006 audit(1489654801.874:295): pid=22253 uid=0 old auid=4294967295 new auid=0 old ses=4294967295 new ses=257 res=1
+Mar 16 05:00:01 linux-o4ot CRON[22253]: pam_unix(crond:session): session closed for user root
